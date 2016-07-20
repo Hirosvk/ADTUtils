@@ -1,8 +1,17 @@
-class LinkedListItem
-  attr_accessor :value, :next, :prev
+require_relative 'linked_list_node.rb'
 
-  def initialize(value)
-    @value = value
+class LinkedList
+  attr_reader :length, :head, :tail
+
+
+  def each
   end
-  
+
+  def []
+  end
+
+  def []=()
+  end
+
+
 end
