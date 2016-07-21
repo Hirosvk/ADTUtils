@@ -1,6 +1,6 @@
-# AdtUtiliT
+# AdtUtilit (in development)
 
-AdtUtiliT is a Ruby gem that provides a range of useful data type classes such as Linked List, Queue, Stack, StackQueue, and Polytree. Most common and intuitive methods are available for each class. See documentations for the details. [Link to RubyGems][ruby_gems_link]
+AdtUtilit is a Ruby gem that provides a range of useful data type classes such as Linked List, Queue, Stack, StackQueue, and Polytree. Most common and intuitive methods are available for each class. See documentations for the details. [Link to RubyGems][ruby_gems_link]
 [ruby_gems_link]:https://rubygems.org/gems/adt_utilit
 
 ## Get Started
@@ -19,11 +19,12 @@ I employed TDD approach in developing AdtUtilit, created a thorough spec using R
 ## Documentation
 
 * [LinkedList][linked_list]
-* Stack (in progress)
-* Queue (in progress)
-* StackQueue (in progress)
-* PloyTree (in progress)
-* LRUCache (in progress)
+* Stack (in development)
+* Queue (in development)
+* StackQueue (in development)
+* PloyTree (in development)
+* Ring Buffer (in development)
+* LRUCache (in development)
 
 [linked_list]:docs/linked_list.md
 
