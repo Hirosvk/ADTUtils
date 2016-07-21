@@ -1,7 +1,6 @@
 ## Array (Ruby dynamic array)
-operation          | methods                 | time complexity
--------------------|-------------------------|-------
-
+method      | time complexity
+------------|----------------
 push        | O(1)
 pop         | O(1)
 shift       | O(1)
@@ -18,4 +17,4 @@ removing           | pop, unshift            | O(1)
 find               | find                    | O(n)
 indexing           | []/remove_at/insert     | O(n)
 
-* LinkedListNodes are not indexed, so #[n] finds nth Node through iteration.
+* Since LinkedListNodes are not indexed, #[n] finds nth Node through iteration.
