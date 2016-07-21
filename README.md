@@ -12,10 +12,10 @@ require 'stack'
 
 ```
 ## Test-Driven Development
-I employed TDD approach in creating adT-utilT gem and wrote a thorough spec for each class before implementation. This ensured the efficiency of the development and resulted in robust code. All Rspec files used are available in the 'development' branch.
+I employed TDD approach in creating adT-utilT gem and created a thorough spec for each class before writing any code. This ensured the efficiency of the development and resulted in robust code. All Rspec files used are available in the 'development' branch.
 
 
-## Classes
+## Documentation
 
 * [LinkedList][linked_list]
 [linked_list]:docs/linked_list.md

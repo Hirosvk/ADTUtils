@@ -29,7 +29,7 @@ When it initializes with a hash, each LinkedListNode has one key-value pair.
 ## Enumerable
 Ruby's Enumerable module methods are supported, such as each, map, and select.
 
-## Accessing LinkedListNode or its value
+## Accessing LinkedListNode and its value
 ```ruby
   linked_list = LinkedList.new(["happy", "sad", "sleepy", "energetic"])
 
@@ -58,3 +58,51 @@ LinkedList#push and LinkedList#unshift takes either a LinkedListNode or a value.
 ```
 
 LinkedList#pop and LinkedList#shift returns the removed node.
+
+LinkedList#insert lets you add a LinkedListNode or value in the middle of LinkedList and shifts the subsequent LinkedListNode.
+
+```ruby
+  linked_list = LinkedList.new(["happy", "sad", "sleepy", "energetic"])
+  node = LinkedListNode.new("good")
+  linked_list.insert(node, 1)
+  linked_list.map(&:value) # => ["happy, "good", "sad", "good"]
+
+
+  linked_list.insert("nice", 2)
+  linked_list.map(&:value) # => ["happy", "good", "nice", "sad", "sleepy", "energetic"]
+```
+
+LinkedList#remove_at removes the LinkedListNode at the index. It returns nil if no such index exists.
+```ruby
+  linked_list = LinkedList.new(["happy", "sad", "happy", "energetic"])
+  linked_list.remove_at(2)
+  linked_list.map(&:value) # => ["happy, "sad", "energetic"]
+
+  linked_list = LinkedList.new(["happy", "sad", "happy", "energetic"])
+  linked_list.remove_all("happy")
+  linked_list.map(&:value) # => ["sad", "energetic"]
+
+```
+
+
+## Find
+LinkedList#find takes a value to search in LinkedList, and returns LinkedListNode with the value. If not value is found, it returns nil.
+
+```ruby
+  linked_list = LinkedList.new(["happy", "sad", "happy", "energetic"])
+  linked_list.find("happy")
+  # => returns the first LinkedListNode, whose value is "happy"
+
+  linked_list.find("dragon")
+  # => returns nil
+```
+
+LinkedList#find_all returns all found LinkedListNodes in an array.
+```ruby
+  linked_list = LinkedList.new(["happy", "sad", "happy", "energetic"])
+  linked_list.find_all("happy")
+  # => returns an array with two LinkedListNodes, whose values are "happy"
+
+  linked_list.find("dragon")
+  # => returns nil
+```
