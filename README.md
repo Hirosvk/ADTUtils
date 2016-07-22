@@ -1,7 +1,15 @@
 # AdtUtilit (in development)
 
-AdtUtilit is a Ruby gem that provides a set of useful data type classes such as Linked List, Queue, Stack, StackQueue, and Polytree. Most common and intuitive methods are available for each class. See documentations for the details. [Link to RubyGems][ruby_gems_link]
+AdtUtilit is a Ruby gem that provides a set of useful data type classes such as Linked List, Queue, Stack, StackQueue, and Polytree. Many intuitive methods are available for each class. See documentations for the details. [Link to RubyGems][ruby_gems_link]
 [ruby_gems_link]:https://rubygems.org/gems/adt_utilit
+
+
+## Use
+AdtUtilit classes are intended to improve time complexity of the program. For example, while it takes O(n) time to get the maximum and minimum values of the queue in the basic implementation of queue, AdtUtilit's StackQueue lets you do that in O(1) time(amortized). It does however, have a higher space complexity.
+
+See the Big O table [here][big_o_table] for the detailed analysis.
+[big_o_table]:docs/methods_big_o_table.md
+
 
 ## Get Started
 After installing the gem(type 'gem install adt_utilit' in the terminal), require necessary ADT library in your file.
@@ -10,9 +18,9 @@ After installing the gem(type 'gem install adt_utilit' in the terminal), require
 require 'adt_utilit/linked_list'
 ```
 
-The below gives a access to all the libraries available in the gem.
+This gives a access to all the libraries available in the gem.
 ```ruby
-require 'adt_utilit/'
+require 'adt_utilit'
 ```
 
 ## Test-Driven Development
@@ -25,9 +33,9 @@ I used metaprogramming to provide useful features for some classes. For example,
 
 * [LinkedList][linked_list]
 * [Stack][stack]
+* Queue
 
 (in development)
-* Queue
 * StackQueue
 * Graph
 * PloyTree
@@ -37,8 +45,3 @@ I used metaprogramming to provide useful features for some classes. For example,
 
 [linked_list]:docs/linked_list.md
 [stack]:docs/stack.md
-
-## Time Complexity Analysis
-Many of ADT implementation in AdtUtilit are optimized for time complexity and takes larger memory availability.
-See the Big O table [here][big_o_table].
-[big_o_table]:docs/methods_big_o_table.md

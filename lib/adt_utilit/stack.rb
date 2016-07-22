@@ -1,4 +1,3 @@
-require 'byebug'
 class Stack
   def initialize(value = nil)
     @stack = []
