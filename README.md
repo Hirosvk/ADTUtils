@@ -24,9 +24,9 @@ I used metaprogramming to provide useful features for some classes. For example,
 ## Documentation
 
 * [LinkedList][linked_list]
+* [Stack][stack]
 
 (in development)
-* Stack
 * Queue
 * StackQueue
 * Graph
@@ -36,6 +36,7 @@ I used metaprogramming to provide useful features for some classes. For example,
 * Ring Buffer
 
 [linked_list]:docs/linked_list.md
+[stack]:docs/stack.md
 
 ## Time Complexity Analysis
 Many of ADT implementation in AdtUtilit are optimized for time complexity and takes larger memory availability.
