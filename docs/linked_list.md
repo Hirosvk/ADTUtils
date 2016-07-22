@@ -1,4 +1,9 @@
 # LinkedList
+AdtUtilit's LinkedList is a doubly-linked list, and the node's adjacent nodes are accessible by #next and #prev functions. To use LinkedList,
+```ruby
+  require 'adt_utilit/linked_list'
+```
+
 
 ## ::initialize
 When it initializes with a single value or object, it creates a LinkedList with the first(and last) LinkedListNode whose value is the value

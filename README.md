@@ -4,11 +4,15 @@ AdtUtilit is a Ruby gem that provides a set of useful data type classes such as 
 [ruby_gems_link]:https://rubygems.org/gems/adt_utilit
 
 ## Get Started
-After installing the gem(type 'gem install adt_utilit' in the terminal), require necessary library in your file.
+After installing the gem(type 'gem install adt_utilit' in the terminal), require necessary ADT library in your file.
 
 ```ruby
 require 'adt_utilit/linked_list'
+```
 
+The below gives a access to all the libraries available in the gem.
+```ruby
+require 'adt_utilit/'
 ```
 
 ## Test-Driven Development
@@ -18,12 +22,16 @@ I employed TDD approach in developing AdtUtilit, created a thorough spec using R
 ## Documentation
 
 * [LinkedList][linked_list]
-* Stack (in development)
-* Queue (in development)
-* StackQueue (in development)
-* PloyTree (in development)
-* LRUCache (in development)
-* Ring Buffer (in development)
+
+(in development)
+* Stack
+* Queue
+* StackQueue
+* Graph
+* PloyTree
+* BinaryTree
+* LRUCache
+* Ring Buffer
 
 [linked_list]:docs/linked_list.md
 
