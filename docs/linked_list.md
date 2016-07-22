@@ -5,7 +5,7 @@ AdtUtilit's LinkedList is a doubly-linked list, and the node's adjacent nodes ar
 ```
 
 
-## ::initialize
+## #initialize
 When it initializes with a single value or object, it creates a LinkedList with the first(and last) LinkedListNode whose value is the value
 ```ruby
   new_list = LinkedList.new("happy")
@@ -23,13 +23,6 @@ When it initializes with an array, it creates a LinkedListNode for each element.
   array_list[1].value # => "sad"
 ```
 
-When it initializes with a hash, each LinkedListNode has one key-value pair.
-```ruby
-  hash_list = LinkedList.new({feliz: "happy", triste: "sad"})
-  hash_list.length # => 2
-  hash_list[0].value # => {feliz: "happy"}
-  hash_list[1].value # => {triste: "sad"}
-```
 
 ## Enumerable
 Ruby's Enumerable module methods are supported, such as each, map, and select.

@@ -15,7 +15,7 @@ class Stack
 
   def self.new_with_metadata(metadata_name, &prc)
     stack = self.new
-    stack.instance_variable_set(:@metadata, {max: "#{metadata_name}_max", min: "#{metadata_name}_min", block: prc})
+    stack.instance_variable_set(:@metadata, {max: "#{metadata_name}_max", min: "#{metadata_name}_min", proc: prc})
 
     define_method("#{metadata_name}_max"){
       return nil if @stack.empty? || @metadata.nil?
@@ -57,16 +57,16 @@ class Stack
     else
       stack_el[:max] = stack_el[:value] >= max ? stack_el[:value] : max
       stack_el[:min] = stack_el[:value] <= min ? stack_el[:value] : min
-      unless @metadata.nil?
-        block = @metadata[:block]
+      if @metadata
+        proc = @metadata[:proc]
 
-        if block.call(stack_el[:value]) >= block.call(self.send("#{@metadata[:max]}"))
+        if proc.call(stack_el[:value]) >= proc.call(self.send("#{@metadata[:max]}"))
           stack_el[@metadata[:max]] = stack_el[:value]
         else
           stack_el[@metadata[:max]] = self.send("#{@metadata[:max]}")
         end
 
-        if block.call(stack_el[:value]) <= block.call(self.send("#{@metadata[:min]}"))
+        if proc.call(stack_el[:value]) <= proc.call(self.send("#{@metadata[:min]}"))
           stack_el[@metadata[:min]] = stack_el[:value]
         else
           stack_el[@metadata[:min]] = self.send("#{@metadata[:min]}")
