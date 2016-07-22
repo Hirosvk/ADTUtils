@@ -1,10 +1,11 @@
 require 'rspec'
-require 'linked_list.rb'
+require 'adt_utilit/linked_list'
 
 describe 'LinkedList' do
   subject(:linked_list) { LinkedList.new(["sad", "happy", "happy", "ok"]) }
   let(:hash_linked_list) { LinkedList.new({ triste: "sad", feliz: "happy", ok: "ok" }) }
   let(:single_linked_list) { LinkedList.new("joyful") }
+  let(:empty_list) { LinkedList.new }
   let(:node) { LinkedListNode.new("awesome") }
 
   describe 'LinkedList#each' do
@@ -30,6 +31,11 @@ describe 'LinkedList' do
       expect(hash_linked_list.length).to eq(3)
       expect(hash_linked_list.head.value).to eq({triste: "sad"})
     end
+
+    it "initialize an empty linked list when no value is given" do
+      expect(empty_list.length).to eq(0)
+    end
+
   end
 
   describe 'LinkedList#head, LinkedList#tail' do
@@ -71,6 +77,13 @@ describe 'LinkedList' do
       linked_list.push(node)
       expect(linked_list.length).to eq(5)
     end
+
+    it 'allows to add an element to empty LinkedList' do
+      empty_list.push("yay")
+      expect(empty_list.length).to eq(1)
+      expect(empty_list[0].value).to eq("yay")
+    end
+
   end
 
   describe 'LinkedList#unshift' do
@@ -95,6 +108,12 @@ describe 'LinkedList' do
     it 'increases the length by 1' do
       linked_list.push(node)
       expect(linked_list.length).to eq(5)
+    end
+
+    it 'allows to add an element to empty LinkedList' do
+      empty_list.unshift("yay")
+      expect(empty_list.length).to eq(1)
+      expect(empty_list[0].value).to eq("yay")
     end
 
   end

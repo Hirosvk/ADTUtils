@@ -4,8 +4,10 @@ class LinkedList
   include Enumerable
   attr_reader :length, :head, :tail
 
-  def initialize(value)
-    if value.is_a?(Array)
+  def initialize(value = nil)
+    if value.nil?
+      nodes = []
+    elsif value.is_a?(Array)
       nodes = initialize_with_array(value)
     elsif value.is_a?(Hash)
       nodes = initialize_with_hash(value)
@@ -52,8 +54,14 @@ class LinkedList
     else
       node = LinkedListNode.new(value)
     end
-    @tail.connect(node)
-    @tail = node
+
+    if @length == 0
+      @head = @tail = node
+    else
+      @tail.connect(node)
+      @tail = node
+    end
+
     @length +=1
     self
   end
@@ -64,8 +72,14 @@ class LinkedList
     else
       node = LinkedListNode.new(value)
     end
-    node.connect(@head)
-    @head = node
+
+    if @length == 0
+      @head = @tail = node
+    else
+      node.connect(@head)
+      @head = node
+    end
+    
     @length +=1
     self
   end
