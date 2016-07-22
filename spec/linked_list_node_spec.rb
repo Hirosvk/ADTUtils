@@ -57,7 +57,11 @@ describe 'LinkedListNode' do
       removed_node = node.remove
       expect(removed_node).to be(node)
     end
+  end
 
+  describe "LinkedListNode#value" do
+    it "returns the value (getter)"
+    it "allows to set value (setter)"
   end
 
 end

@@ -27,10 +27,11 @@ describe 'LinkedList' do
       expect(linked_list.map(&:value)).to eq(["sad", "happy", "happy", "ok"])
     end
 
-    it "when givin a hash, it stores each pair in the node" do
-      expect(hash_linked_list.length).to eq(3)
-      expect(hash_linked_list.head.value).to eq({triste: "sad"})
-    end
+    # it "when givin a hash, it stores each pair in the node" do
+    #   expect(hash_linked_list.length).to eq(3)
+    #   expect(hash_linked_list.head.value).to eq({triste: "sad"})
+    # end
+    # LinkedList should not support hash entry, since hash does not have order
 
     it "initialize an empty linked list when no value is given" do
       expect(empty_list.length).to eq(0)

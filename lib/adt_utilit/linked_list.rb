@@ -9,8 +9,9 @@ class LinkedList
       nodes = []
     elsif value.is_a?(Array)
       nodes = initialize_with_array(value)
-    elsif value.is_a?(Hash)
-      nodes = initialize_with_hash(value)
+    # elsif value.is_a?(Hash)
+    #   nodes = initialize_with_hash(value)
+    # see spec
     else
       nodes = [LinkedListNode.new(value)]
     end
@@ -79,7 +80,7 @@ class LinkedList
       node.connect(@head)
       @head = node
     end
-    
+
     @length +=1
     self
   end
@@ -162,14 +163,15 @@ class LinkedList
     nodes
   end
 
-  def initialize_with_hash(hash)
-    nodes = []
-    hash.map do |key, value|
-      node = LinkedListNode.new({key => value})
-      nodes[-1].connect(node) unless nodes[-1].nil?
-      nodes << node
-    end
-    nodes
-  end
+  # def initialize_with_hash(hash)
+  #   nodes = []
+  #   hash.map do |key, value|
+  #     node = LinkedListNode.new({key => value})
+  #     nodes[-1].connect(node) unless nodes[-1].nil?
+  #     nodes << node
+  #   end
+  #   nodes
+  # end
+  # see spec
 
 end
