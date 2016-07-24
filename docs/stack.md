@@ -36,7 +36,7 @@ Stack#push adds element to the top of the Stack, while Stack#pop removes the top
 Stack#peek returns the top value of the stack.
 
 ## #min/#max
-Stack#min and #max returns the current maximum and minimum value of the stack. Since each element in the Stack is kept as a Hash with its value and current max/min, fetching of max/min is don in constant time.
+Stack#min and #max returns the current maximum and minimum value of the stack. Since each element in the Stack is kept as a Hash with its value and current max/min, fetching of max/min is done in constant time.
 
 ```ruby
     stack = Stack.new([1,34,21,64,0])
@@ -54,7 +54,7 @@ Stack#min and #max returns the current maximum and minimum value of the stack. S
 When #push, the comparison is made with the new value and the current min/max values of the stack using <= and >=.
 
 ## ::new_with_metadata
-Stack::new_with_metadata is a factory method that returns a new empty Stack capable of tracking additional custom metadata. The method takes the name of the metadata and a block.
+Stack::new_with_metadata is a factory method that returns a new empty Stack capable of tracking custom metadata. The method takes the name of the metadata and a block.
 
 ```ruby
   stack = Stack.new_with_metadata(:string_length) { |str| str.length }
@@ -70,3 +70,6 @@ Stack::new_with_metadata is a factory method that returns a new empty Stack capa
   # when the lengths are equal, the newer value becomes the maximum
 ```
 The current implementation supports only one set of custom metadata.
+
+## Enumerable
+Ruby's Enumerable module methods are supported, such as each, map, and select.

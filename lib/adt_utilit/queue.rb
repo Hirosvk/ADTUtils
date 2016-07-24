@@ -1,4 +1,5 @@
 class Queue
+  include Enumerable
   def initialize(value = nil)
     if value.nil?
       @queue = []
@@ -7,6 +8,10 @@ class Queue
     else
       @queue = [value]
     end
+  end
+
+  def each(&prc)
+    @queue.each(&prc)
   end
 
   def length

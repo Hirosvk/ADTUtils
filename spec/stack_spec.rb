@@ -22,6 +22,16 @@ describe 'Stack' do
     end
   end
 
+  describe "Stack#empty?" do
+    it "returns true if the Stack is empty" do
+      expect(empty_stack.empty?).to eq(true)
+    end
+    it "returns false if the Stack is not empty" do
+      expect(single_stack.empty?).to eq(false)
+      expect(string_stack.empty?).to eq(false)
+    end
+  end
+
   describe "Stack#push" do
     it "adds value to stack" do
       string_stack.push("blue")
@@ -85,12 +95,40 @@ describe 'Stack' do
   end
 
   describe "Stack#new_with_matadata" do
-    it "creates a custom matadata that tracks min/max value of the stack." do
-      stack = Stack.new_with_metadata(:string_length) { |str| str.length }
-      ["happy", "sad", "good", "ecstatic"].each { |word| stack.push(word) }
+    let(:stack){ Stack.new_with_metadata(:string_length) { |str| str.length } }
+    before(:each) {
+      ["happy", "good", "sad", "ecstatic"].each { |word| stack.push(word) }
+    }
 
+    it "creates a custom matadata that tracks min/max value of the stack." do
       expect(stack.string_length_max).to eq("ecstatic")
       expect(stack.string_length_min).to eq("sad")
+    end
+    it "updates custom min/max value as elements are popped out" do
+      stack.pop
+      expect(stack.string_length_max).to eq("happy")
+      stack.pop
+      expect(stack.string_length_min).to eq("good")
+    end
+
+    it "raise error if the metadata method is called upon an instance whose custom metadata is not set" do
+      expect{integer_stack.string_length_max}.to raise_error("such metadata has not been set for this instance")
+    end
+  end
+
+  describe 'Stack#each' do
+    it "takes a block and yeilds the block for every element in the Stack, starting from the bottom" do
+      array = []
+      string_stack.each {|value| array << value }
+      expect(array).to eq(["happy", "sad", "good", "ecstatic"])
+    end
+  end
+
+  describe 'Stack#each_from_top' do
+    it "takes a block and yeilds the block for every element in the Stack, starting from the top." do
+      array = []
+      string_stack.each_from_top {|value| array << value }
+      expect(array).to eq(["ecstatic", "good", "sad", "happy"])
     end
   end
 

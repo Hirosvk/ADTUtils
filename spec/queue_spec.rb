@@ -70,5 +70,12 @@ describe "Queue" do
 
   end
 
+  describe 'Queue#each' do
+    it "takes a block and yeilds the block for every element in the Queue" do
+      array = []
+      queue.each {|value| array << value }
+      expect(array).to eq([1,2,3,4,5])
+    end
+  end
 
 end

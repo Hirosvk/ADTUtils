@@ -1,4 +1,5 @@
 class Stack
+  include Enumerable
   def initialize(value = nil)
     @stack = []
     if value.nil?
@@ -17,11 +18,13 @@ class Stack
     stack.instance_variable_set(:@metadata, {max: "#{metadata_name}_max", min: "#{metadata_name}_min", proc: prc})
 
     define_method("#{metadata_name}_max"){
-      return nil if @stack.empty? || @metadata.nil?
+      raise "such metadata has not been set for this instance" if @metadata.nil?
+      return nil if @stack.empty?
       @stack.last[@metadata[:max]]
     }
     define_method("#{metadata_name}_min"){
-      return nil if @stack.empty? || @metadata.nil?
+      raise "such metadata has not been set for this instance" if @metadata.nil?
+      return nil if @stack.empty?
       @stack.last[@metadata[:min]]
     }
     stack
@@ -44,6 +47,10 @@ class Stack
 
   def length
     @stack.length
+  end
+
+  def empty?
+    @stack.length == 0
   end
 
   def push(value)
@@ -82,6 +89,17 @@ class Stack
     top_el[:value]
   end
 
+  def each(&prc)
+    @stack.each do |el|
+      prc.call(el[:value])
+    end
+  end
 
+  def each_from_top(&prc)
+    (@stack.length - 1).downto(0) do |i|
+      prc.call(@stack[i][:value])
+    end
+    self
+  end
 
 end
