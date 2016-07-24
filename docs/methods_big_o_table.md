@@ -5,7 +5,7 @@ push        | O(1)
 pop         | O(1)
 shift       | O(1)
 unshift     | O(n)
-[] (index)  | O(1)
+\[] (index)  | O(1)
 find        | O(n)
 insert      | O(1)
 
