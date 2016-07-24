@@ -1,9 +1,35 @@
-# LinkedList
-AdtUtilit's LinkedList is a doubly-linked list, and the node's adjacent nodes are accessible by #next and #prev functions. To use LinkedList,
+# LinkedListNode
+AdtUtilit's LinkedListNode is a doubly-linked list node, and the node's adjacent nodes are accessible by #next and #prev functions. You can get the value of the node by calling #value.
+
+To use LinkedListNode, include this line in your file.
 ```ruby
-  require 'adt_utilit/linked_list'
+  require 'adt_utilit/linked_list_node'
 ```
 
+## #connect/#remove
+LinkedListNode#connect and #remove take care of the prev/next relationships.
+```ruby
+  node1 = LinkedListNode.new("a")
+  node2 = LinkedListNode.new("b")
+  node3 = LinkedListNode.new("c")
+
+  node1.connect(node2)
+  node1.next # => node2
+  node2.prev # => node1
+
+  node2.connect(node3)
+  node2.remove
+  node1.next # => node3
+  node3.prev # => node1
+```
+
+
+# LinkedList
+LinkedList is a collection of LinkedListNodes, and provides practical methods to work with linked list.
+
+```ruby
+require 'adt_utilit/linked_list'
+```
 
 ## #initialize
 When it initializes with a single value or object, it creates a LinkedList with the first(and last) LinkedListNode whose value is the value
@@ -23,9 +49,6 @@ When it initializes with an array, it creates a LinkedListNode for each element.
   array_list[1].value # => "sad"
 ```
 
-
-## Enumerable
-Ruby's Enumerable module methods are supported, such as each, map, and select.
 
 ## Accessing LinkedListNode and its value
 ```ruby
@@ -82,16 +105,19 @@ LinkedList#remove_at removes the LinkedListNode at the index. It returns nil if 
 
 ```
 
+## Enumerable
+Ruby's Enumerable module methods are supported, such as each, map, and select.
 
-## Find
-LinkedList#find takes a value to search in LinkedList, and returns LinkedListNode with the value. If not value is found, it returns nil.
+
+## #find_node/#find_all
+LinkedList#find_node takes a value to search in LinkedList, and returns LinkedListNode with the value. If not value is found, it returns nil. Enumerable's #find returns the value while LinkedList#find_node returns a LinkedListNode object.
 
 ```ruby
   linked_list = LinkedList.new(["happy", "sad", "happy", "energetic"])
-  linked_list.find("happy")
+  linked_list.find_node("happy")
   # => returns the first LinkedListNode, whose value is "happy"
 
-  linked_list.find("dragon")
+  linked_list.find_node("dragon")
   # => returns nil
 ```
 

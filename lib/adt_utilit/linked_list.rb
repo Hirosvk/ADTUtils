@@ -95,7 +95,7 @@ class LinkedList
     shifted_node
   end
 
-  def find(value)
+  def find_node(value)
     self.each do |node|
       return node if node.value == value
     end

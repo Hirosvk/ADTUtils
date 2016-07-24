@@ -46,6 +46,7 @@ StackQueue#dequeue removes the first element and return the element.
 ```
 
 ## min/max
+min/max search is done in constant time.
 ```ruby
   stack_queue = StackQueue.new([2,3,6,7,3])
   stack_queue.min # => 2

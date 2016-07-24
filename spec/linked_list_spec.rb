@@ -158,13 +158,13 @@ describe 'LinkedList' do
   end
 
 
-  describe 'LinkedList#find' do
+  describe 'LinkedList#find_node' do
     it 'returns the first node whose value is the argument' do
-      expect(linked_list.find("happy")).to be(linked_list[1])
+      expect(linked_list.find_node("happy")).to be(linked_list[1])
     end
 
     it 'returns nil if no node is found' do
-      expect(linked_list.find("angry")).to eq(nil)
+      expect(linked_list.find_node("angry")).to eq(nil)
     end
   end
 
@@ -221,8 +221,8 @@ describe 'LinkedList' do
       expect(linked_list.find_all("happy").map(&:value)).to eq(["happy", "happy"])
     end
 
-    it 'returns nil if no node is found' do
-      expect(linked_list.find("angry")).to eq(nil)
+    it 'returns empty array if no node is found' do
+      expect(linked_list.find_all("angry")).to eq([])
     end
   end
 
