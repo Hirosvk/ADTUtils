@@ -5,7 +5,7 @@ AdtUtilit is a Ruby gem that provides a set of useful data type classes such as 
 
 
 ## Use
-AdtUtilit provides various data types with many practical methods that improve time complexity of the program. StackQueue#min/max returns min/max values of Queue content in constant time.
+AdtUtilit provides various data types with many practical methods that improve time complexity of the program. For example, StackQueue#min/max returns mininum and maximum values of the Queue content in constant time.
 
 See the Big O table [here][big_o_table] for the detailed analysis.
 [big_o_table]:docs/methods_big_o_table.md

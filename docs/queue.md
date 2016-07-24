@@ -1,5 +1,5 @@
 # Queue
-AdtUtilit's Queue is a basic implementation of Queue, and offers common methods such as enqueue, dequeue, and peek. Ruby's Enumerable methods can also be used such as each, map and select.
+AdtUtilit's Queue is a basic implementation of Queue, and offers common methods such as enqueue, dequeue, and peek. Ruby's Enumerable methods can also be used such as each, map and select. I used Ruby's built-in Array class to store data, which let us shift in constant time.
 
 To use Stack, add the following line in your ruby file.
 ```ruby
