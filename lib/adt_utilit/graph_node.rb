@@ -65,4 +65,27 @@ class GraphNode
 
   end
 
+  def _bfs(search_value = nil, searched = Set.new, &prc)
+    if (search_value && block_given?) || (search_value.nil? && !block_given?)
+      raise "Wrong number of argument"
+    end
+    prc = Proc.new{ |val| val == search_value } if search_value
+
+    search_queue = [self]
+    until search_queue.empty?
+      node = search_queue.shift
+      return node if prc.call(node)
+      searched.add(node)
+
+      if node.children.length > 0
+        node.children.each do |child|
+          search_queue << child unless searched.include?(child)
+        end
+      end
+    end
+    return nil
+
+  end
+
+
 end

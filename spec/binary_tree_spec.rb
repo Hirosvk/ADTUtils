@@ -9,6 +9,7 @@ describe BinaryTree do
   let!(:tree_node_5){ BinaryTreeNode.new(5) }
   let!(:tree_node_6){ BinaryTreeNode.new(6) }
   let!(:tree_node_7){ BinaryTreeNode.new(7) }
+  let!(:tree_node_8){ BinaryTreeNode.new(8) }
 
   before(:each) {
     tree_node_1.connect(tree_node_2)
@@ -25,25 +26,39 @@ describe BinaryTree do
     end
 
     it "When given a root with children, it updates @last on initialize" do
-      expect(tree).to receive(:get_last)
-      BinaryTree.new(tree_node_1)
+      expect(tree.last).to be(tree_node_5)
     end
 
-    it "when given other object, it creates the root node with the argument" do
-      expect(tree.root.value).to be("hooray")
+    it "when given a value other than BinaryTreeNode, it creates the root node with the argument" do
+      _tree = BinaryTree.new("hooray")
+      expect(_tree.root.value).to eq("hooray")
+    end
+
+    it "when given a value other than BinaryTreeNode, it creates the root node with the argument" do
+      _tree = BinaryTree.new("hooray")
+      expect(_tree.last.value).to eq("hooray")
     end
   end
 
-  describe "#get_last" do
-    it "returns the node to which next will be added" do
-      expect(tree.last).to be(tree_node_5)
+  describe "#last" do
+    it "when all nodes are full, it returns the node without children that is closest to the root" do
+      tree.insert_to_last(tree_node_7)
+      expect(tree.last).to be(tree_node_3)
+    end
+
+    it "is the node without children that is closest to the root" do
+      tree_node_2.remove(tree_node_4)
+      tree_node_3.connect(tree_node_4)
+      tree_node_3.connect(tree_node_8)
+      tree.send(:get_last)
+      expect(tree.last).to be(tree_node_2)
     end
   end
 
   describe "#insert_to_last" do
     it "connects the node to the end of the tree" do
       tree.insert_to_last(tree_node_7)
-      expect(tree.dfs(7)).to_not eq(nil)
+      expect(tree.bfs(7)).to_not eq(nil)
     end
 
     it "updates the @last" do
@@ -112,8 +127,4 @@ describe BinaryTree do
 
   end
 
-
-  #full?
-  #perfect?
-  #complete?
 end
