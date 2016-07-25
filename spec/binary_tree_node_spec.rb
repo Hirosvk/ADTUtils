@@ -56,6 +56,7 @@ describe BinaryTreeNode do
     end
   end
 
+
   describe "#filled?" do
     it "returns true if the node has two children" do
       tree_node_1.connect(tree_node_2)
@@ -215,6 +216,28 @@ describe BinaryTreeNode do
       expect(result).to be(tree_node_4)
     end
 
+  end
+
+
+  describe "#switch" do
+    before(:each) {
+      tree_node_1.connect(tree_node_2)
+      tree_node_2.connect(tree_node_3)
+      tree_node_2.connect(tree_node_4)
+      tree_node_1.connect(tree_node_5)
+      tree_node_5.connect(tree_node_6)
+      tree_node_5.connect(tree_node_7)
+    }
+    it "raise an error unless parent-child relationship exists"  do
+      expect{ tree_node_1.switch(tree_node_7) }.to raise_error("No parent-child relationship exists")
+    end
+
+    it "switch the position in tree" do
+      tree_node_1.switch(tree_node_5)
+      expect(tree_node_5.right_child).to be(tree_node_1)
+      expect(tree_node_1.left_child).to be(tree_node_6)
+      expect(tree_node_1.right_child).to be(tree_node_7)
+    end
   end
 
 end

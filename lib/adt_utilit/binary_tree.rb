@@ -12,9 +12,11 @@ class BinaryTree
   end
 
 
-  def insert_to_last(node)
+  def insert(node)
+    node = BinaryTreeNode.new(node) unless node.is_a?(BinaryTreeNode)
     @last.connect(node)
     get_last
+    node
   end
 
 
@@ -29,7 +31,7 @@ class BinaryTree
   def trav_pre_order(value = nil, &prc)
     @root.trav_pre_order(value, &prc)
   end
-  
+
   def trav_post_order(value = nil, &prc)
     @root.trav_post_order(value, &prc)
   end

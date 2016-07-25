@@ -2,6 +2,11 @@ require 'set'
 require 'byebug'
 class GraphNode
   attr_reader :children, :value
+
+  protected
+  attr_writer :children
+
+  public
   def initialize(value)
     @value = value
     @children = []

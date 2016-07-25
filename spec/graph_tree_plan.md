@@ -39,13 +39,11 @@ initialize with root node or a value
 #get_min
 #insert -> #fix
 #remove_min -> #fix
-#find
 
 MaxHeap < BinaryTree
 initialize with root node or a value
 #get_max
 #insert -> #fix
 #remove_max -> #fix
-#find
 
 CustomHeap < BinaryTree

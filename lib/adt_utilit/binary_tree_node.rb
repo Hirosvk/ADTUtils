@@ -23,6 +23,15 @@ class BinaryTreeNode < GraphNode
     super(node)
   end
 
+  def switch(node)
+    unless self.children.include?(node)
+      raise "No parent-child relationship exists"
+    end
+    replace_idx = self.children.find_index(node)
+    self.children, node.children = node.children, self.children
+    node.children[replace_idx] = self
+  end
+
   def filled?
     !!(left_child && right_child)
   end

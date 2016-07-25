@@ -42,7 +42,7 @@ describe BinaryTree do
 
   describe "#last" do
     it "when all nodes are full, it returns the node without children that is closest to the root" do
-      tree.insert_to_last(tree_node_7)
+      tree.insert(tree_node_7)
       expect(tree.last).to be(tree_node_3)
     end
 
@@ -55,15 +55,20 @@ describe BinaryTree do
     end
   end
 
-  describe "#insert_to_last" do
+  describe "#insert" do
     it "connects the node to the end of the tree" do
-      tree.insert_to_last(tree_node_7)
+      tree.insert(tree_node_7)
       expect(tree.bfs(7)).to_not eq(nil)
     end
 
     it "updates the @last" do
       expect(tree).to receive(:get_last)
-      tree.insert_to_last(tree_node_7)
+      tree.insert(tree_node_7)
+    end
+
+    it "allow value as argument" do
+      tree.insert(7)
+      expect(tree.bfs(7)).to_not eq(nil)
     end
   end
 
