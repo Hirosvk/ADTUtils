@@ -19,6 +19,17 @@ describe BinaryTreeNode do
     end
   end
 
+  describe "#parent" do
+    it "returns parent node" do
+      tree_node_1.connect(tree_node_2)
+      expect(tree_node_2.parent).to be(tree_node_1)
+    end
+
+    it "returns nil if the node has no parent" do
+      expect(tree_node_3.parent).to eq(nil)
+    end
+  end
+
   describe "#left_child" do
     it "returns nil if children is empty" do
       expect(tree_node_1.left_child).to eq(nil)

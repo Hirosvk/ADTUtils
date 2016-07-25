@@ -1,6 +1,13 @@
 require_relative "graph_node"
+require 'byebug'
 
 class BinaryTreeNode < GraphNode
+  attr_reader :parent
+
+  protected
+  attr_writer :parent
+
+  public
   def initialize(value)
     super(value)
   end
@@ -21,6 +28,7 @@ class BinaryTreeNode < GraphNode
       raise "Undirected edges are not allowed in binary tree"
     end
     super(node)
+    node.parent = self
   end
 
   def switch(node)
@@ -30,6 +38,15 @@ class BinaryTreeNode < GraphNode
     replace_idx = self.children.find_index(node)
     self.children, node.children = node.children, self.children
     node.children[replace_idx] = self
+
+    if self.parent.nil?
+      node.parent = nil
+      self.parent = node
+    else
+      replace_idx = self.parent.children.find_index(self)
+      self.parent, node.parent = node, self.parent
+      node.parent.children[replace_idx] = node
+    end
   end
 
   def filled?

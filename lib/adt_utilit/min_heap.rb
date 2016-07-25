@@ -12,14 +12,17 @@ class MinHeap < BinaryTree
   end
 
   private
-  def up_heap(parant, child)
-    if parent == @root
-      return
-    elsif parent.value < child.value
+  def up_heap(parent_node, child_node)
+    if parent_node.value < child_node.value
       return
     else
-      parent.switch(child)
-
+      parent_node.switch(child_node)
+      if child_node.parent.nil?
+        @root = child_node
+        return
+      else
+        up_heap(child_node.parent, child_node)
+      end
     end
   end
 
