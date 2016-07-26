@@ -1,21 +1,23 @@
 require_relative "binary_tree_node"
 
 class BinaryTree
-  attr_reader :root, :last
+  attr_reader :root, :last, :last_parent
   def initialize(value)
     if value.is_a?(BinaryTreeNode)
       @root = value
     else
       @root = BinaryTreeNode.new(value)
     end
-    @last = get_last
+    @last_parent = get_last_parent
+    @last = get_last_node
   end
 
 
   def insert(node)
     node = BinaryTreeNode.new(node) unless node.is_a?(BinaryTreeNode)
-    @last.connect(node)
-    get_last
+    @last_parent.connect(node)
+    get_last_parent
+    get_last_node
     node
   end
 
@@ -37,13 +39,21 @@ class BinaryTree
   end
 
   protected
-  def get_last
+  def get_last_parent
     result = @root._bfs {|node| node.left_child && node.right_child.nil?}
     if result.nil?
       result = @root._bfs{ |node| !node.filled? }
     end
-    @last = result
+    @last_parent = result
   end
 
+  def get_last_node
+    result = @root._bfs{|node| node.left_child && node.right_child.nil?}
+    if result
+      @last = result.left_child
+    else
+      @last = @root._trav_right_first{|node| !node.filled?}
+    end
+  end
 
 end

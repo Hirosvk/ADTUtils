@@ -25,8 +25,8 @@ describe BinaryTree do
       expect(tree.root).to be(tree_node_1)
     end
 
-    it "When given a root with children, it updates @last on initialize" do
-      expect(tree.last).to be(tree_node_5)
+    it "When given a root with children, it updates @last_parent on initialize" do
+      expect(tree.last_parent).to be(tree_node_5)
     end
 
     it "when given a value other than BinaryTreeNode, it creates the root node with the argument" do
@@ -36,22 +36,22 @@ describe BinaryTree do
 
     it "when given a value other than BinaryTreeNode, it creates the root node with the argument" do
       _tree = BinaryTree.new("hooray")
-      expect(_tree.last.value).to eq("hooray")
+      expect(_tree.last_parent.value).to eq("hooray")
     end
   end
 
-  describe "#last" do
+  describe "#last_parent" do
     it "when all nodes are full, it returns the node without children that is closest to the root" do
       tree.insert(tree_node_7)
-      expect(tree.last).to be(tree_node_3)
+      expect(tree.last_parent).to be(tree_node_3)
     end
 
     it "is the node without children that is closest to the root" do
       tree_node_2.remove(tree_node_4)
       tree_node_3.connect(tree_node_4)
       tree_node_3.connect(tree_node_8)
-      tree.send(:get_last)
-      expect(tree.last).to be(tree_node_2)
+      tree.send(:get_last_parent)
+      expect(tree.last_parent).to be(tree_node_2)
     end
   end
 
@@ -61,14 +61,20 @@ describe BinaryTree do
       expect(tree.bfs(7)).to_not eq(nil)
     end
 
-    it "updates the @last" do
-      expect(tree).to receive(:get_last)
+    it "updates the @last_parent" do
+      expect(tree).to receive(:get_last_parent)
       tree.insert(tree_node_7)
     end
 
     it "allow value as argument" do
       tree.insert(7)
       expect(tree.bfs(7)).to_not eq(nil)
+    end
+
+    it "updates the last node" do
+      expect(tree.last).to be(tree_node_6)
+      tree.insert(tree_node_7)
+      expect(tree.last).to be(tree_node_7)
     end
   end
 
