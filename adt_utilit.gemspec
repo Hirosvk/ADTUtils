@@ -9,10 +9,6 @@ Gem::Specification.new do |s|
   s.files       = ["lib/adt_utilit.rb",
                    "lib/adt_utilit/linked_list_node.rb",
                    "lib/adt_utilit/linked_list.rb",
-                   "lib/adt_utilit/binary_tree.rb",
-                   "lib/adt_utilit/binary_tree_node.rb",
-                   "lib/adt_utilit/graph_node.rb",
-                   "lib/adt_utilit/min_heap.rb",
                    "lib/adt_utilit/queue.rb",
                    "lib/adt_utilit/stack_queue.rb",
                    "lib/adt_utilit/stack.rb"

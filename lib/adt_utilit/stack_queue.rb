@@ -112,7 +112,6 @@ class StackQueue
 
   private
   def slinky
-    puts "slinky"
     if @stack_b.empty?
       @stack_b_bottom = @stack_a.peek
       @stack_b.push(@stack_a.pop) until @stack_a.empty?
