@@ -1,69 +1,61 @@
-require_relative "binary_tree"
+require 'byebug'
+class MinHeap
 
-class MinHeap < BinaryTree
-  def get_min
-    @root.value
-  end
-
-  def insert(node)
-    current_last = @last_parent
-    added_node = super(node)
-    up_heap(current_last, added_node)
-    get_last_parent
-    get_last_node
-    # debugger
-  end
-
-  def remove_min
-    return_value = get_min
-
-    @last.parent.remove(@last)
-    @last.send("parent=", nil)
-    right = @root.remove(@root.right_child)
-    left = @root.remove(@root.left_child)
-    @last.connect(left)
-    @last.connect(right)
-
-    @root = @last
-    down_heap(@root)
-
-    get_last_parent
-    get_last_node
-    return_value
-  end
-
-  private
-  def up_heap(parent_node, child_node)
-    if parent_node.value < child_node.value
-      return
-    else
-      parent_node.switch(child_node)
-      if child_node.parent.nil?
-        @root = child_node
-        return
-      else
-        up_heap(child_node.parent, child_node)
+  def initialize(value = nil)
+    @tree = []
+    if value.is_a?(Array)
+      value.each do |el|
+        self.insert(el)
       end
+    elsif value
+      self.insert(value)
     end
   end
 
-  def down_heap(node)
-    if node.children.empty?
-      return
-    elsif node.left_child &&
-      node.value > node.left_child.value &&
-      (node.right_child.nil? || node.right_child.value > node.left_child.value)
-      @root = node.left_child
-      node.switch(node.left_child)
-      down_heap(node)
-      return
-    elsif node.right_child &&
-      node.value > node.right_child.value &&
-      (node.left_child.nil? || node.left_child.value > node.right_child.value)
-      @root = node.right_child
-      node.switch(node.right_child)
-      down_heap(node)
-      return
+  def length
+    @tree.length
+  end
+
+  def get_min
+    @tree.first
+  end
+
+  def insert(value)
+    @tree << value
+    up_heap(@tree.length - 1)
+  end
+
+  def remove_min
+    removed = @tree.shift
+    last = @tree.pop
+    @tree.unshift(last)
+    down_heap(0)
+    removed
+  end
+
+  private
+  def up_heap(child_idx)
+    return if child_idx == 0
+    parent_idx = (child_idx - 1) / 2
+    if @tree[parent_idx] > @tree[child_idx]
+      @tree[parent_idx], @tree[child_idx] = @tree[child_idx], @tree[parent_idx]
+      up_heap(parent_idx)
+    end
+  end
+
+  def down_heap(parent_idx)
+    child_idx1 = (parent_idx * 2) + 1
+    child_idx2 = (parent_idx * 2) + 2
+    if @tree[child_idx1] && @tree[child_idx2]
+      child_idx = @tree[child_idx1] > @tree[child_idx2] ? child_idx2 : child_idx1
+    else
+      child_idx = @tree[child_idx1] ? child_idx1 : child_idx2
+      return if @tree[child_idx].nil?
+    end
+    debugger if @tree[child_idx].nil?
+    if @tree[child_idx] < @tree[parent_idx]
+      @tree[parent_idx], @tree[child_idx] = @tree[child_idx], @tree[parent_idx]
+      down_heap(child_idx)
     end
   end
 

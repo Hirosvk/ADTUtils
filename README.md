@@ -41,9 +41,7 @@ require 'adt_utilit'
 * [BinaryTreeNode][binary_tree_node]
 
 (in development)
-* Graph
-* PloyTree
-* BinaryTree
+* Heap
 * LRUCache
 * Ring Buffer
 
