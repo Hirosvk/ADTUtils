@@ -24,32 +24,30 @@ class BinaryTreeNode < GraphNode
     if @children.length >= 2
       raise "BinaryTreeNode can have only two children"
     end
-    # if node.children.include?(self)
-    #   debugger
-    #   raise "Undirected edges are not allowed in binary tree"
-    # end
+    if node.children.include?(self)
+      raise "Undirected edges are not allowed in binary tree"
+    end
     super(node)
-    node.parent = self
   end
 
-  def switch(node)
-    unless self.children.include?(node)
-      raise "No parent-child relationship exists"
-    end
-    replace_idx = self.children.find_index(node)
-    self.children, node.children = node.children, self.children
-    node.children[replace_idx] = self
-
-    if self.parent.nil?
-      node.parent = nil
-    else
-      replace_idx = self.parent.children.find_index(self)
-      self.parent, node.parent = node, self.parent
-      node.parent.children[replace_idx] = node
-    end
-    node.children.each{|child| child.parent = node}
-    # debugger
-  end
+  # def switch(node)
+  #   unless self.children.include?(node)
+  #     raise "No parent-child relationship exists"
+  #   end
+  #   replace_idx = self.children.find_index(node)
+  #   self.children, node.children = node.children, self.children
+  #   node.children[replace_idx] = self
+  #
+  #   if self.parent.nil?
+  #     node.parent = nil
+  #   else
+  #     replace_idx = self.parent.children.find_index(self)
+  #     self.parent, node.parent = node, self.parent
+  #     node.parent.children[replace_idx] = node
+  #   end
+  #   node.children.each{|child| child.parent = node}
+  #   # debugger
+  # end
 
   def filled?
     !!(left_child && right_child)

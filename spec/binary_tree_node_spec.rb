@@ -19,40 +19,53 @@ describe BinaryTreeNode do
     end
   end
 
-  describe "#parent" do
-    it "returns parent node" do
-      tree_node_1.connect(tree_node_2)
-      expect(tree_node_2.parent).to be(tree_node_1)
-    end
-
-    it "returns nil if the node has no parent" do
-      expect(tree_node_3.parent).to eq(nil)
-    end
-  end
+  # describe "#parent" do
+  #   it "returns parent node" do
+  #     tree_node_1.connect(tree_node_2)
+  #     expect(tree_node_2.parent).to be(tree_node_1)
+  #   end
+  #
+  #   it "returns nil if the node has no parent" do
+  #     expect(tree_node_3.parent).to eq(nil)
+  #   end
+  # end
 
   describe "#left_child" do
     it "returns nil if children is empty" do
       expect(tree_node_1.left_child).to eq(nil)
     end
 
-    it "is the first child of the node" do
+    it "when a node is connected to an empty node, it becomes the left_child" do
       tree_node_1.connect(tree_node_2)
       expect(tree_node_1.left_child).to be(tree_node_2)
     end
-  end
 
-  describe "#right_child" do
-    it "returns nil if children is empty" do
-      tree_node_1.connect(tree_node_5)
-      expect(tree_node_1.right_child).to eq(nil)
-    end
-
-    it "is the second child of the node" do
+    it "when a second node is connected, it become the right_chld" do
       tree_node_1.connect(tree_node_2)
       tree_node_1.connect(tree_node_5)
       expect(tree_node_1.right_child).to be(tree_node_5)
     end
+
+    it "when the left_child is removed, the right_child becomes the left_child"do
+    tree_node_1.connect(tree_node_2)
+    tree_node_1.connect(tree_node_5)
+    tree_node_1.remove(tree_node_2)
+    expect(tree_node_1.left_child).to be(tree_node_5)
+    end
   end
+
+  # describe "#right_child" do
+  #   it "returns nil if children is empty" do
+  #     tree_node_1.connect(tree_node_5)
+  #     expect(tree_node_1.right_child).to eq(nil)
+  #   end
+  #
+  #   it "is the second child of the node" do
+  #     tree_node_1.connect(tree_node_2)
+  #     tree_node_1.connect(tree_node_5)
+  #     expect(tree_node_1.right_child).to be(tree_node_5)
+  #   end
+  # end
 
   describe "#connect" do
     it "raises error when adding more than two nodes" do
@@ -230,25 +243,25 @@ describe BinaryTreeNode do
   end
 
 
-  describe "#switch" do
-    before(:each) {
-      tree_node_1.connect(tree_node_2)
-      tree_node_2.connect(tree_node_3)
-      tree_node_2.connect(tree_node_4)
-      tree_node_1.connect(tree_node_5)
-      tree_node_5.connect(tree_node_6)
-      tree_node_5.connect(tree_node_7)
-    }
-    it "raise an error unless parent-child relationship exists"  do
-      expect{ tree_node_1.switch(tree_node_7) }.to raise_error("No parent-child relationship exists")
-    end
-
-    it "switch the position in tree" do
-      tree_node_1.switch(tree_node_5)
-      expect(tree_node_5.right_child).to be(tree_node_1)
-      expect(tree_node_1.left_child).to be(tree_node_6)
-      expect(tree_node_1.right_child).to be(tree_node_7)
-    end
-  end
+  # describe "#switch" do
+  #   before(:each) {
+  #     tree_node_1.connect(tree_node_2)
+  #     tree_node_2.connect(tree_node_3)
+  #     tree_node_2.connect(tree_node_4)
+  #     tree_node_1.connect(tree_node_5)
+  #     tree_node_5.connect(tree_node_6)
+  #     tree_node_5.connect(tree_node_7)
+  #   }
+  #   it "raise an error unless parent-child relationship exists"  do
+  #     expect{ tree_node_1.switch(tree_node_7) }.to raise_error("No parent-child relationship exists")
+  #   end
+  #
+  #   it "switch the position in tree" do
+  #     tree_node_1.switch(tree_node_5)
+  #     expect(tree_node_5.right_child).to be(tree_node_1)
+  #     expect(tree_node_1.left_child).to be(tree_node_6)
+  #     expect(tree_node_1.right_child).to be(tree_node_7)
+  #   end
+  # end
 
 end

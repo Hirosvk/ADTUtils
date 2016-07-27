@@ -37,6 +37,7 @@ require 'adt_utilit'
 * [Stack][stack]
 * [Queue][queue]
 * [StackQueue][stack_queue]
+* [GraphNode][graph_node]
 
 (in development)
 * Graph
@@ -49,3 +50,4 @@ require 'adt_utilit'
 [stack]:docs/stack.md
 [queue]:docs/queue.md
 [stack_queue]:docs/stack_queue.md
+[graph_node]:docs/graph_node.md
