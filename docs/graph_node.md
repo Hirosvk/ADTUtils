@@ -1,4 +1,5 @@
 # GraphNode
+AdtUtilit's GraphNode is a simple implementation of graph, and supports basic Breadth First Search and Depth First Search.
 
 ## #initialize
 It initializes with a value.
@@ -26,8 +27,6 @@ graph_node_1.connect(graph_node_2)
 graph_node_2.connect(graph_node_1)
 ```
 
-
-
 ## #remove
 It removes the node from the receiver's children.
 ```ruby
@@ -47,6 +46,16 @@ graph_node_1 = GraphNode.new(1)
 graph_node_2 = GraphNode.new(2)
 
 graph_node_2.remove(graph_node_1) # => nil
+
+```
+
+\#remove_all removes all children from the node.
+```ruby
+graph_node_1 = GraphNode.new(1)
+graph_node_2 = GraphNode.new(2)
+
+graph_node_2.remove_all # => nil
+graph_node2.children # => []
 
 ```
 
