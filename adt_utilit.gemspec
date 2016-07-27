@@ -11,7 +11,9 @@ Gem::Specification.new do |s|
                    "lib/adt_utilit/linked_list.rb",
                    "lib/adt_utilit/queue.rb",
                    "lib/adt_utilit/stack_queue.rb",
-                   "lib/adt_utilit/stack.rb"
+                   "lib/adt_utilit/stack.rb",
+                   "lib/adt_utilit/graph_node",
+                   "lib/adt_utilit/binary_tree_node"
                  ]
   s.homepage    =
     'http://rubygems.org/gems/adt_utilit'
