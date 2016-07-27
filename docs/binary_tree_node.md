@@ -1,6 +1,6 @@
 # BinaryTreeNode
 AdtUtilit's BinaryTreeNode inherits from [GraphNode][graph_node], and has all the same functionality. See below for additional functions.
-[graph_node]:docs/graph_node.md
+[graph_node]:graph_node.md
 
 ## #connect
 BinaryTreeNode#connect method works the same as GraphNode#connect, but only accepts upto two children. It also does not allow undirected edges, and it will raise error.
