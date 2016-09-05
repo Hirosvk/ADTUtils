@@ -14,6 +14,7 @@ describe "GraphNode" do
     end
   end
 
+
   describe "#connect" do
     before(:each) {graph_node_one.connect(graph_node_two)}
     it "creates a directed edge from the receiver node to the argument node" do
